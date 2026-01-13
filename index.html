@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Choza Nautica - Restaurante Marino</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <nav class="container">
             <div class="logo">
-    <img src="img/chozanauticaica.jpg" alt="Logo La Choza Náutica">
-    <span>La Choza Náutica</span>
-</div>
+                <img src="img/choza.jpg" alt="Logo La Choza Náutica">
+                <span>La Choza Náutica</span>
+            </div>
             <ul class="nav-links">
                 <li><a onclick="showSection('home')">Inicio</a></li>
                 <li><a onclick="showSection('menu')">Menú</a></li>
@@ -52,7 +54,8 @@
         <!-- Order Section -->
         <section id="order" class="section">
             <div class="container">
-                <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 2rem;">Gestión de Pedidos</h2>
+                <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 2rem;">Gestión de Pedidos
+                </h2>
                 <div class="form-container">
                     <h3 style="color: #2c5aa0; text-align: center; margin-bottom: 2rem;">Información del Cliente</h3>
                     <form id="order-form">
@@ -86,9 +89,11 @@
                         </div>
                         <div class="form-group">
                             <label>Comentarios Especiales</label>
-                            <textarea class="form-control" rows="2" placeholder="Ej: Sin cebolla, extra picante..."></textarea>
+                            <textarea class="form-control" rows="2"
+                                placeholder="Ej: Sin cebolla, extra picante..."></textarea>
                         </div>
-                        <button type="submit" class="btn" style="width: 100%; font-size: 1.2rem;">Confirmar Pedido</button>
+                        <button type="submit" class="btn" style="width: 100%; font-size: 1.2rem;">Confirmar
+                            Pedido</button>
                     </form>
                     <div class="success-message" id="order-success">
                         ¡Pedido confirmado! Te contactaremos pronto para confirmar la entrega.
@@ -100,9 +105,11 @@
         <!-- Register Section -->
         <section id="register" class="section">
             <div class="container">
-                <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 2rem;">Registro para Delivery</h2>
+                <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 2rem;">Registro para
+                    Delivery</h2>
                 <div class="form-container">
-                    <h3 style="color: #2c5aa0; text-align: center; margin-bottom: 2rem;">Únete a nuestro servicio de delivery</h3>
+                    <h3 style="color: #2c5aa0; text-align: center; margin-bottom: 2rem;">Únete a nuestro servicio de
+                        delivery</h3>
                     <form id="register-form">
                         <div class="form-row">
                             <div class="form-group">
@@ -181,37 +188,37 @@
             <button class="btn" style="width: 100%;" onclick="proceedToOrder()">Proceder al Pedido</button>
         </div>
     </div>
-  <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">
-      <img src="img/chozanauticaica.jpg" alt="La Choza Náutica" />
-      <h3>La Choza Náutica</h3>
-      <p>Sabores del mar directo a tu mesa 🌊</p>
-    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/choza.jpg" alt="La Choza Náutica" />
+                <h3>La Choza Náutica</h3>
+                <p>Sabores del mar directo a tu mesa 🌊</p>
+            </div>
 
-    <div class="footer-links">
-      <h4>Enlaces</h4>
-      <ul>
-        <li><a onclick="showSection('home')">Inicio</a></li>
-        <li><a onclick="showSection('menu')">Menú</a></li>
-        <li><a onclick="showSection('order')">Pedidos</a></li>
-        <li><a onclick="showSection('register')">Delivery</a></li>
-      </ul>
-    </div>
+            <div class="footer-links">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a onclick="showSection('home')">Inicio</a></li>
+                    <li><a onclick="showSection('menu')">Menú</a></li>
+                    <li><a onclick="showSection('order')">Pedidos</a></li>
+                    <li><a onclick="showSection('register')">Delivery</a></li>
+                </ul>
+            </div>
 
-    <div class="footer-contact">
-      <h4>Contáctanos</h4>
-      <p>📍 Av. del Mar 1450, Lima - Perú</p>
-      <p>📞 (01) 567-8900</p>
-      <p>📧 reservas@lachozanautica.pe</p>
-    </div>
-  </div>
+            <div class="footer-contact">
+                <h4>Contáctanos</h4>
+                <p>📍 Av. del Mar 1450, Lima - Perú</p>
+                <p>📞 (01) 567-8900</p>
+                <p>📧 reservas@lachozanautica.pe</p>
+            </div>
+        </div>
 
-  <div class="footer-bottom">
-    <p>© 2025 La Choza Náutica | Todos los derechos reservados</p>
-  </div>
-</footer>
+        <div class="footer-bottom">
+            <p>© 2025 La Choza Náutica | Todos los derechos reservados</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
- 
+
 </html>

@@ -1,0 +1,210 @@
+/* style.css: minimal, responsivo, mantener estilo simple */
+:root {
+    --accent: #006064;
+    --muted: #666;
+    --bg: #f8f8f8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: #222;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.site-header {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand { margin: 8px 0; color: var(--accent); }
+
+.main-nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.main-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.main-nav a:hover {
+    background: rgba(0, 96, 100, 0.06);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    font-size: 22px;
+}
+
+.site-footer {
+    background: #fff;
+    padding: 18px;
+    margin-top: 24px;
+    text-align: center;
+    color: var(--muted);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 12px;
+}
+
+/* Banner principal */
+.hero-banner {
+    background-image: url('img/choza.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.45);
+    z-index:0;
+}
+
+.hero-banner * {
+    position: relative;
+    z-index:1;
+    color: white !important;
+}
+
+/* Grids */
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width:900px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width:600px) { 
+    .menu-grid { grid-template-columns: 1fr; }
+    .menu-toggle { display: block; }
+    .main-nav { display: none; flex-direction: column; width: 100%; }
+    .main-nav.open { display: flex; }
+}
+
+.platos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; width:100%; }
+.plato-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.plato-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Forms y botones */
+.button {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin: 6px 0;
+}
+
+input[type=number] {
+    padding: 3px 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 50px;
+}
+
+.small { font-size: 0.9rem; color: var(--muted); }
+
+.row { display: flex; gap: 12px; }
+.col { flex: 1; }
+
+.cart-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+/* Botones del carrito: eliminar, vaciar, actualizar, seguir comprando */
+.btn-eliminar,
+.btn-vaciar,
+.btn-actualizar,
+.btn-seguir {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 5px 2px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-eliminar,
+.btn-vaciar { background-color: #e74c3c; }
+.btn-eliminar:hover,
+.btn-vaciar:hover { background-color: #c0392b; transform: translateY(-1px); }
+
+.btn-actualizar { background-color: #28a745; }
+.btn-actualizar:hover { background-color: #218838; transform: translateY(-1px); }
+
+.btn-seguir { background-color: #007bff; }
+.btn-seguir:hover { background-color: #0056b3; transform: translateY(-1px); }
+
+.btn-eliminar:active,
+.btn-vaciar:active,
+.btn-actualizar:active,
+.btn-seguir:active { transform: translateY(0); }
