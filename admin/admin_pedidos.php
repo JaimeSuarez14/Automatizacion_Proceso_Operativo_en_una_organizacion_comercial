@@ -133,7 +133,7 @@ include"cabecera_admin_pedidos.php";
                 <td><?= isset($row['monto_total']) ? number_format($row['monto_total'], 2) : '-' ?></td>
                 <td>
                     <div class="d-flex gap-2">
-                        <a href="detalle_pedido.php?id_pedido=<?php $row['id_pedido'] ?>" class="btn btn-outline-secondary p-2" title="detalle"><i class="bi bi-list-ul "></i></a>
+                        <a href="detalle_pedido.php?id_pedido=<?php echo $row['id_pedido'] ?>" class="btn btn-outline-secondary p-2" title="detalle"><i class="bi bi-list-ul "></i></a>
                         <form method="POST" onsubmit="return confirm('¿Eliminar pedido <?= $row['id_pedido'] ?>?');">
                             <input type="hidden" name="id_pedido" value="<?= $row['id_pedido'] ?>">
                             <button title="eliminar" type="submit" name="eliminar_pedido" class="btn btn-outline-danger p-2"><i class="bi bi-trash3"></i></button>
