@@ -56,27 +56,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php require 'header.php'; ?>
+<section class="w-100">
+    <div class="card mx-auto " style="width: 25rem; ">
+        <h2>Iniciar Sesión</h2>
 
-<section class="card">
-    <h2>Iniciar Sesión</h2>
+        <?php if (!empty($error)): ?>
+            <p class="error" style="color:red;text-align:center;"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
 
-    <?php if (!empty($error)): ?>
-        <p class="error" style="color:red;text-align:center;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
+        <form action="" method="POST">
+            <label>Correo electrónico</label>
+            <input type="email" name="email" required value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
 
-    <form action="" method="POST">
-        <label>Correo electrónico</label>
-        <input type="email" name="email" required value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
+            <label>Contraseña</label>
+            <input type="password" name="contrasena" required>
 
-        <label>Contraseña</label>
-        <input type="password" name="contrasena" required>
+            <button type="submit" class="btn button">Ingresar</button>
+        </form>
 
-        <button type="submit" class="btn button">Ingresar</button>
-    </form>
-
-    <p style="text-align:center;margin-top:15px;">
-        ¿No tienes una cuenta? <a href="registro.php">Regístrate aquí</a>
-    </p>
+        <p style="text-align:center;margin-top:15px;">
+            ¿No tienes una cuenta? <a href="registro.php">Regístrate aquí</a>
+        </p>
+    </div>
 </section>
 
 <?php require 'footer.php'; ?>

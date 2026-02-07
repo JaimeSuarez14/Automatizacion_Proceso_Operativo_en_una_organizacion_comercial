@@ -13,28 +13,28 @@
       </div>
     </div>
 
-   <!-- Redes Sociales -->
-<div style="flex:1; min-width:200px; text-align:center; margin-bottom:20px;">
-  <h3 style="color:#ffc400; margin-bottom:15px;">Síguenos</h3>
+    <!-- Redes Sociales -->
+    <div style="flex:1; min-width:200px; text-align:center; margin-bottom:20px;">
+      <h3 style="color:#ffc400; margin-bottom:15px;">Síguenos</h3>
 
-  <ul style="list-style:none; padding:0; line-height:2;">
-    <li>
-      <a href="https://www.facebook.com/lachozanauticaica/?locale=es_LA" target="_blank" style="color:white; text-decoration:none;">
-        Facebook
-      </a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com/lachozanauticaica/?hl=es" target="_blank" style="color:white; text-decoration:none;">
-        Instagram
-      </a>
-    </li>
-    <li>
-      <a href="https://www.tiktok.com/@la.choza.nautica?is_from_webapp=1&sender_device=pc" target="_blank" style="color:white; text-decoration:none;">
-        TikTok
-      </a>
-    </li>
-  </ul>
-</div>
+      <ul style="list-style:none; padding:0; line-height:2;">
+        <li>
+          <a href="https://www.facebook.com/lachozanauticaica/?locale=es_LA" target="_blank" style="color:white; text-decoration:none;">
+            Facebook
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/lachozanauticaica/?hl=es" target="_blank" style="color:white; text-decoration:none;">
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@la.choza.nautica?is_from_webapp=1&sender_device=pc" target="_blank" style="color:white; text-decoration:none;">
+            TikTok
+          </a>
+        </li>
+      </ul>
+    </div>
 
 
     <!-- Contacto -->
@@ -60,6 +60,10 @@
     });
   });
 </script>
+<script src="assets/dist/js/bootstrap.bundle.min.js"
+  class="astro-vvvwv3sm"></script>
+
 
 </body>
+
 </html>
