@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php require 'header.php'; ?>
 
 <section class="w-100">
-    <div class="card mx-auto" style="width: 25rem;">
-        <h2>Iniciar Sesión</h2>
+    <div class="card mx-auto p-4 bg-body-tertiary" style="width: 25rem;">
+        <h2 class="text-center py-2"><i class="fa-solid fa-users me-2"></i>Iniciar Sesión</h2>
 
         <?php if (!empty($error)): ?>
             <p class="error" style="color:red;text-align:center;"><?= htmlspecialchars($error) ?></p>

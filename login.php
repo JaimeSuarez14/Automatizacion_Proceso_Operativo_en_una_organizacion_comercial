@@ -56,10 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php require 'header.php'; ?>
-<section class="w-100 p-4">
-    <div class="card mx-auto " style="width: 25rem; ">
-        <h2>Iniciar Sesión</h2>
-
+<section class="w-100">
+    <div class="card mx-auto  p-4 bg-body-tertiary" style="width: 25rem; ">
+        <h2 class="text-center py-2"><i class="fa-solid fa-users me-2"></i>Iniciar Sesión</h2>
         <?php if (!empty($error)): ?>
             <p class="error" style="color:red;text-align:center;"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
@@ -71,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label>Contraseña</label>
             <input type="password" name="contrasena" required>
 
-            <button type="submit" class="btn btn-success">Ingresar</button>
+            <button type="submit" class="btn btn-success mt-3">Ingresar</button>
         </form>
 
         <p style="text-align:center;margin-top:15px;">
