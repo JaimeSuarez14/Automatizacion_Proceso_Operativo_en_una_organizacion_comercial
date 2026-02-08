@@ -4,10 +4,10 @@
 // ==========================
 session_start();
 require 'db.php'; // Asegúrate de que $pdo esté definido aquí
-if (isset($_SESSION['rol']) && isset($_SESSION['nombre_usuario']) && $_SESSION['rol'] =="admin"){
+if (isset($_SESSION['rol']) && isset($_SESSION['nombre_usuario']) && $_SESSION['rol'] == "admin") {
     header("Location: admin/admin.php");
     exit;
-}   
+}
 
 
 $error = "";
@@ -56,26 +56,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php require 'header.php'; ?>
 
-<section class="card">
-    <h2>Iniciar Sesión</h2>
+<section class="w-100">
+    <div class="card mx-auto" style="width: 25rem;">
+        <h2>Iniciar Sesión</h2>
 
-    <?php if (!empty($error)): ?>
-        <p class="error" style="color:red;text-align:center;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
+        <?php if (!empty($error)): ?>
+            <p class="error" style="color:red;text-align:center;"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
 
-    <form action="" method="POST">
-        <label>Nombre de usuario</label>
-        <input type="text" name="usuario" required value="<?= isset($usuario) ? htmlspecialchars($usuario) : '' ?>">
+        <form action="" method="POST">
+            <label>Nombre de usuario</label>
+            <input type="text" name="usuario" required value="<?= isset($usuario) ? htmlspecialchars($usuario) : '' ?>">
 
-        <label>Contraseña</label>
-        <input type="password" name="contrasena" required>
+            <label>Contraseña</label>
+            <input type="password" name="contrasena" required>
 
-        <button type="submit" class="btn button">Ingresar</button>
-    </form>
+            <button type="submit" class="btn btn-success mt-2">Ingresar</button>
+        </form>
 
-    <p style="text-align:center;margin-top:15px;">
-        Solo disponible para Jefatura. <a href="">Contacta con Administrador</a>
-    </p>
+        <p style="text-align:center;margin-top:15px;">
+            Solo disponible para Jefatura. <a href="">Contacta con Administrador</a>
+        </p>
+    </div>
 </section>
 
 <?php require 'footer.php'; ?>

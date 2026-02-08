@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php require 'header.php'; ?>
-<section class="w-100">
+<section class="w-100 p-4">
     <div class="card mx-auto " style="width: 25rem; ">
         <h2>Iniciar Sesión</h2>
 
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label>Contraseña</label>
             <input type="password" name="contrasena" required>
 
-            <button type="submit" class="btn button">Ingresar</button>
+            <button type="submit" class="btn btn-success">Ingresar</button>
         </form>
 
         <p style="text-align:center;margin-top:15px;">

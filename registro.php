@@ -1,7 +1,8 @@
 <?php require 'header.php'; ?>
 
 <section>
-    <h1>Registro de Usuario</h1>
+    <div class="card mx-auto" style="width: 30rem;">
+        <h1>Registro de Usuario</h1>
 
     <?php
     if (isset($_GET['error'])) {
@@ -30,6 +31,7 @@
 
         <button type="submit" class="button">Registrarme</button>
     </form>
+    </div>
 </section>
 
 <?php require 'footer.php'; ?>
