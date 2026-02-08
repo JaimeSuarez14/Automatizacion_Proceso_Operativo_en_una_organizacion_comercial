@@ -11,6 +11,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
   <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="icons/person-fill.svg">
   <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 </head>
@@ -20,8 +21,10 @@ if (session_status() === PHP_SESSION_NONE) session_start();
     <div class="container header-inner">
       <h1 class="brand">La Choza Náutica</h1>
       <nav class="main-nav">
-        <a href="index.php">Inicio</a>
-        <a href="menu.php">Menú</a>
+        <a class="flex align-content-center gap-2" href="index.php">
+          <i class="fa-solid fa-house"></i><span>Inicio</span>
+        </a>
+        <a href="menu.php" class="flex align-content-center gap-2" ><i class="fa-solid fa-plate-wheat"></i><span>Menú</span></a>
 
         <?php if (isset($_SESSION['nombre_usuario'])): ?>
           <a href="admin/admin.php" style="color:green; font-size: bold; font-weight: bold; padding: 5px ;background-color: #afe09d;">Gestionar</a>
@@ -43,7 +46,10 @@ if (session_status() === PHP_SESSION_NONE) session_start();
             </div>
           </div>
         <?php else: ?>
-          <a href="login.php">Iniciar sesión</a>
+          <a href="login.php" class="flex align-content-center gap-2">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <span>Iniciar sesión</span>
+          </a>
         <?php endif;  ?>
       </nav>
       <button class="menu-toggle" aria-label="Menu">☰</button>
