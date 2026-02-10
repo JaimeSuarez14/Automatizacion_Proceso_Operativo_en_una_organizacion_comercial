@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $error = "La contraseña es incorrecta.";
                 }
             } else {
-                $error = "No existe una cuenta con ese usuario.";
+                $error = "Credenciales Invalidas.";
             }
         } catch (PDOException $e) {
             $error = "Error en la base de datos: " . $e->getMessage();
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if (!empty($error)): ?>
             <p class="error" style="color:red;text-align:center;"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
-
+        <p class="fw-light">Inicia sesión con tu cuenta de administrador, solo ingresa las credenciales asignadas.</p>
         <form action="" method="POST">
             <label>Nombre de usuario</label>
             <input type="text" name="usuario" required value="<?= isset($usuario) ? htmlspecialchars($usuario) : '' ?>">
