@@ -118,7 +118,7 @@ try {
     $pdo->commit();
 
     // 5. Enviar email de confirmación
-    enviarEmailConfirmacion($email, $nombre, $id_pedido, $total, $productos);
+    //enviarEmailConfirmacion($email, $nombre, $id_pedido, $total, $productos);
 
     // 6. Limpiar carrito
     $_SESSION['cart'] = [];

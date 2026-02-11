@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 </head>
 
 <body>
-  <header class="site-header">
+  <header class="site-header bg-info-subtle">
     <div class="container header-inner">
       <h1 class="brand">
         <img src="icons/logo.png" width="60" alt="">
@@ -30,13 +30,13 @@ if (session_status() === PHP_SESSION_NONE) session_start();
         <a href="menu.php" class="flex align-content-center gap-2"><i class="fa-solid fa-plate-wheat"></i><span>Menú</span></a>
 
         <?php if (isset($_SESSION['nombre_usuario'])): ?>
-          <a  href="admin/admin.php" style="color:green; font-size: bold; font-weight: bold; padding: 5px ;background-color: #bde3af;" class="flex align-items-center gap-5"><i class="fa-solid fa-user-shield"></i><span>Gestionar</span></a>
+          <a href="admin/admin.php" style="color:green; font-size: bold; font-weight: bold; padding: 5px ;background-color: #bde3af;" class="flex align-items-center gap-5"><i class="fa-solid fa-user-shield"></i><span>Gestionar</span></a>
         <?php endif ?>
 
         <?php if (isset($_SESSION['cliente_nombre']) || isset($_SESSION['nombre_usuario'])): ?>
           <a class="flex align-items-center gap-2" href="carrito.php">
             <i class="fa-solid fa-cart-arrow-down "></i>
-              <span>Pedidos (Carrito)</span>
+            <span>Pedidos (Carrito)</span>
           </a>
 
           <!-- Dropdown de usuario -->

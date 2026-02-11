@@ -43,7 +43,7 @@ require 'header.php';
     
     <div class="checkout-container">
         <!-- Resumen del Pedido -->
-        <div class="checkout-resumen">
+        <div class="checkout-resumen p-4 bg-body-secondary">
             <h3>Resumen de Pedido</h3>
             <table class="checkout-table">
                 <thead>
@@ -71,7 +71,7 @@ require 'header.php';
         </div>
 
         <!-- Formulario de Cliente -->
-        <div class="checkout-form">
+        <div class="checkout-form p-4 bg-body-secondary">
             <h3>Información del Cliente</h3>
             <form id="formCheckout" method="POST" action="procesar_venta.php">
                 
