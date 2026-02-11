@@ -27,7 +27,13 @@ if (session_status() === PHP_SESSION_NONE) session_start();
         <a class="flex align-content-center gap-2" href="index.php">
           <i class="fa-solid fa-house"></i><span>Inicio</span>
         </a>
-        <a href="menu.php" class="flex align-content-center gap-2"><i class="fa-solid fa-plate-wheat"></i><span>Menú</span></a>
+        <a href="nosotros.php" class="flex align-content-center gap-4">
+          <i class="fa-solid fa-users me-2"></i><span>Nosotros</span>
+        </a>
+        <a href="menu.php" class="flex align-content-center gap-2"><i class="fa-solid fa-plate-wheat">
+          </i><span>Menú</span>
+        </a>
+
 
         <?php if (isset($_SESSION['nombre_usuario'])): ?>
           <a href="admin/admin.php" style="color:green; font-size: bold; font-weight: bold; padding: 5px ;background-color: #bde3af;" class="flex align-items-center gap-5"><i class="fa-solid fa-user-shield"></i><span>Gestionar</span></a>
@@ -61,14 +67,14 @@ if (session_status() === PHP_SESSION_NONE) session_start();
             </ul>
           </div>
 
-    </div>
-  <?php else: ?>
-    <a href="login.php" class="flex align-content-center gap-2">
-      <i class="fa-solid fa-arrow-right-to-bracket"></i>
-      <span>Iniciar sesión</span>
-    </a>
-  <?php endif;  ?>
-  </nav>
+       
+        <?php else: ?>
+          <a href="login.php" class="flex align-content-center gap-2">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <span>Iniciar sesión</span>
+        </a>
+        <?php endif;  ?>
+      </nav>
   <button class="menu-toggle" aria-label="Menu">☰</button>
   </div>
   </header>

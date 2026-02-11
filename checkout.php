@@ -2,6 +2,11 @@
 require 'db.php';
 session_start();
 
+if (!isset($_SESSION['cliente_nombre']) || empty($_SESSION['cliente_nombre']) ){
+  header('Location: login.php'); // Redirige al login
+  exit;
+}
+
 // Verificar que hay productos en el carrito
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     header("Location: carrito.php");

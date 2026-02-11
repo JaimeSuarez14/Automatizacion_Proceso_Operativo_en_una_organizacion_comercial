@@ -27,7 +27,7 @@ require 'db.php';
 
       <div class="card plato-item">
 
-        <img class="plato-img"
+        <img class="plato-img h-50"
           src="<?php echo $ruta; ?>"
           alt="<?php echo htmlspecialchars($p['nombre_plato']); ?>"
           onerror="this.onerror=null; this.src='img/noimage.jpg';">

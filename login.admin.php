@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['admin_id'] = $user['id_usuario'];
                     $_SESSION['nombre_usuario'] = $user['usuario'];
                     $_SESSION['rol'] = $user['rol'];
+                    $_SESSION['cliente_nombre'] = $user['usuario'];
 
                     // Redirigir al index
                     header("Location: admin/admin.php");
