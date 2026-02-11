@@ -77,7 +77,14 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     margin-bottom: 12px;
 }
+.card-hover {
+  transition: all 0.3s ease;
+}
 
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,.15);
+}
 /* Banner principal */
 .hero-banner {
     background-image: url('img/choza.jpg');
@@ -164,7 +171,7 @@ input[type=number] {
 
 .small { font-size: 0.9rem; color: var(--muted); }
 
-.row { display: flex; gap: 12px; }
+
 .col { flex: 1; }
 
 .cart-line {

@@ -13,79 +13,82 @@ $resultCategorias = $conn->query("SELECT DISTINCT categoria FROM platos ORDER BY
 $categorias = $resultCategorias->fetch_all(MYSQLI_ASSOC);
 ?>
 
-<h1 class="titulo-menu">Menú</h1>
+<div class="container-fluid px-4">
+    <h1 class="text-center fw-bold mb-5">🍽️ Nuestro Menú</h1>
+    <?php foreach ($categorias as $cat): ?>
+        <div class="mb-5">
+            <h2 class="mb-4 my-2">
+                <span class="badge bg-primary fs-5 px-4 py-2">
+                    <?php echo htmlspecialchars($cat['categoria']); ?>
+                </span>
+            </h2>
 
-<div class="contenedor-menu">
+            <?php
+            // Obtener platos de esa categoría usando MySQLi
+            $categoriaActual = $cat['categoria'];
 
-<?php foreach ($categorias as $cat): ?>
-    <section class="categoria">
-        
-        <!-- Título de categoría -->
-        <h2 class="categoria-titulo">
-            <?php echo htmlspecialchars($cat['categoria']); ?>
-        </h2>
+            // Preparar la consulta
+            $stmt = $conn->prepare("SELECT * FROM platos WHERE categoria = ? ORDER BY nombre_plato");
+            $stmt->bind_param("s", $categoriaActual);
+            $stmt->execute();
+            $resultadoPlatos = $stmt->get_result();
+            $listaPlatos = $resultadoPlatos->fetch_all(MYSQLI_ASSOC);
+            ?>
 
-        <?php
-        // Obtener platos de esa categoría usando MySQLi
-        $categoriaActual = $cat['categoria'];
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+                <?php foreach ($listaPlatos as $plato): ?>
+                    <div class="col p-0">
+                        <div class="card h-100 shadow-sm border-0 card-hover">
+                            <?php
+                            $img = (!empty($plato['imagen'])) ? trim($plato['imagen']) : "noimage.jpg";
+                            $ruta = "img/" . $img;
+                            ?>
+                            <img
+                                src="<?php echo $ruta; ?>"
+                                class="card-img-top"
+                                alt="<?php echo htmlspecialchars($plato['nombre_plato']); ?>"
+                                onerror="this.onerror=null; this.src='img/noimage.jpg';"
+                                style="height:200px; object-fit:cover;">
 
-        // Preparar la consulta
-        $stmt = $conn->prepare("SELECT * FROM platos WHERE categoria = ? ORDER BY nombre_plato");
-        $stmt->bind_param("s", $categoriaActual);
-        $stmt->execute();
-        $resultadoPlatos = $stmt->get_result();
-        $listaPlatos = $resultadoPlatos->fetch_all(MYSQLI_ASSOC);
-        ?>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-semibold">
+                                    <?php echo htmlspecialchars($plato['nombre_plato']); ?>
+                                </h5>
 
-        <div class="platos-grid">
+                                <p class="card-text text-muted small flex-grow-1">
+                                    <?php echo htmlspecialchars($plato['descripcion']); ?>
+                                </p>
 
-            <?php foreach ($listaPlatos as $plato): ?>
-                <div class="plato-item">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="fw-bold text-success fs-5">
+                                        S/ <?php echo number_format($plato['precio'], 2); ?>
+                                    </span>
+                                </div>
 
-                    <?php 
-                    // Usar la imagen guardada o mostrar una por defecto
-                    $img = (!empty($plato['imagen'])) ? trim($plato['imagen']) : "noimage.jpg";
-                    $ruta = "img/" . $img;
-                    ?>
+                                <form action="agregar_carrito.php" method="post">
+                                    <input type="hidden" name="id_plato" value="<?php echo $plato['id_plato']; ?>">
 
-                    <!-- Imagen -->
-                    <img class="plato-img"
-                         src="<?php echo $ruta; ?>"
-                         alt="<?php echo htmlspecialchars($plato['nombre_plato']); ?>"
-                         onerror="this.onerror=null; this.src='img/noimage.jpg';">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Cant.</span>
+                                        <input
+                                            type="number"
+                                            name="cantidad"
+                                            class="form-control"
+                                            value="1"
+                                            min="1">
+                                    </div>
 
-                    <!-- Nombre del plato -->
-                    <h3><?php echo htmlspecialchars($plato['nombre_plato']); ?></h3>
+                                    <button class="btn btn-primary w-100">
+                                        🛒 Agregar al carrito
+                                    </button>
+                                </form>
 
-                    <!-- Descripción -->
-                    <p><?php echo htmlspecialchars($plato['descripcion']); ?></p>
-
-                    <!-- Precio -->
-                    <span class="precio">S/ <?php echo number_format($plato['precio'], 2); ?></span>
-
-                    <!-- FORMULARIO PARA AGREGAR AL CARRITO -->
-                    <form action="agregar_carrito.php" method="post" style="margin-top:10px;">
-                        <input type="hidden" name="id_plato" value="<?php echo $plato['id_plato']; ?>">
-
-                        <label class="small" style="display:block; margin-bottom:5px;">Cantidad:</label>
-                        <input 
-                            type="number" 
-                            name="cantidad" 
-                            value="1" 
-                            min="1"
-                            class="input-cantidad"
-                        >
-
-                        <button class="button" type="submit" style="width:100%;">Agregar</button>
-                    </form>
-
-                </div>
-            <?php endforeach; ?>
-
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </section>
-<?php endforeach; ?>
-
+    <?php endforeach; ?>
 </div>
-
 <?php require_once __DIR__ . '/footer.php'; ?>
