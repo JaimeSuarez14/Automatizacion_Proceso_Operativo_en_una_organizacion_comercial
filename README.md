@@ -1,4 +1,7 @@
 # Choza - Sistema de Pedidos en Línea (Proyecto)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-yellow?logo=javascript&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8%2B-blue?logo=php&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-5%2B-blue?logo=bootstrap&logoColor=white)
 
 ## Descripción
 
