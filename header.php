@@ -62,8 +62,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                   <a href="logout.php" style="text-decoration:none; color:white;">Cerrar sesión</a>
                 </div>
               </li>
-              <li><a class="dropdown-item" href="historial_pedidos.php">Historial de Pedidos</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="historial_pedidos.php">Historial Pedidos</a></li>
+              <li><a class="dropdown-item" href="#">Comentarios</a></li>
             </ul>
           </div>
 

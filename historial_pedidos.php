@@ -40,31 +40,88 @@ if (!$pedidos) {
 
 require 'header.php';
 ?>
-<section class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Importe</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Metodo de Pago</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($pedidos as $pedido): ?>
-      <tr>
-        <th scope="row"><?php echo htmlspecialchars($pedido['id_pedido']);?></th>
-        <th scope="row"><?php echo htmlspecialchars($pedido['fecha_pedido']);?></th>
-        <th scope="row"><?php echo htmlspecialchars($pedido['monto_total']);?></th>
-        <th scope="row"><?=  $pedido['estado']!=""? htmlspecialchars($pedido['estado']) : "Vacio";?></th>
-        <th scope="row"><?php echo htmlspecialchars($pedido['metodo_pago']);?></th>
-        
-      </tr>
-      <?php endforeach; ?> 
-     
-    </tbody>
-  </table>
+
+<section class="container py-5">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white rounded-top-4">
+          <h4 class="mb-0">
+            <i class="bi bi-receipt me-2"></i> Mis Pedidos
+          </h4>
+        </div>
+
+        <div class="card-body p-4">
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle text-center">
+
+              <thead class="table-light">
+                <tr>
+                  <th># Pedido</th>
+                  <th>Fecha</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                  <th>Método de Pago</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <?php foreach ($pedidos as $pedido): ?>
+                <tr>
+
+                  <td class="fw-bold">
+                    #<?= htmlspecialchars($pedido['id_pedido']); ?>
+                  </td>
+
+                  <td>
+                    <?= date("d/m/Y H:i", strtotime($pedido['fecha_pedido'])); ?>
+                  </td>
+
+                  <td class="fw-semibold text-success">
+                    S/. <?= number_format($pedido['monto_total'], 2); ?>
+                  </td>
+
+                  <td>
+                    <?php
+                      $estado = $pedido['estado'] ?? 'Pendiente';
+
+                      $badgeClass = 'bg-secondary';
+
+                      if (stripos($estado, 'pendiente') !== false) {
+                          $badgeClass = 'bg-warning text-dark';
+                      } elseif (stripos($estado, 'completado') !== false) {
+                          $badgeClass = 'bg-success';
+                      } elseif (stripos($estado, 'cancelado') !== false) {
+                          $badgeClass = 'bg-danger';
+                      }
+                    ?>
+                    <span class="badge <?= $badgeClass ?> px-3 py-2 rounded-pill">
+                      <?= htmlspecialchars($estado); ?>
+                    </span>
+                  </td>
+
+                  <td>
+                    <span class="badge bg-info text-dark px-3 py-2 rounded-pill">
+                      <?= htmlspecialchars($pedido['metodo_pago']); ?>
+                    </span>
+                  </td>
+
+                </tr>
+                <?php endforeach; ?>
+              </tbody>
+
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <?php require __DIR__ . '/footer.php'; ?>

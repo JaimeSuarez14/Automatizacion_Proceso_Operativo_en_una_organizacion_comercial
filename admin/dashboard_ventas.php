@@ -58,10 +58,10 @@ $stmt = $pdo->query("
         c.nombre,
         p.fecha_pedido,
         p.monto_total,
-        ep.descripcion as estado
+        ep.nombre_estado as estado
     FROM pedidos p
     JOIN clientes c ON p.id_cliente = c.id_cliente
-    LEFT JOIN estadopedido ep ON p.id_estado = ep.id_estado
+    LEFT JOIN estadospedido ep ON p.id_estado = ep.id_estado
     ORDER BY p.fecha_pedido DESC
     LIMIT 10
 ");
@@ -185,7 +185,7 @@ require __DIR__ . '../admin_header.php';;
                             <td>S/. <?= number_format($v['monto_total'], 2) ?></td>
                             <td><span class="badge badge-<?= strtolower(str_replace(' ', '-', $v['estado'])) ?>"><?= $v['estado'] ?></span></td>
                             <td>
-                                <a href="detalle_pedido.php?id=<?= $v['id_pedido'] ?>" class="btn-small">Ver</a>
+                                <a href="detalle_pedido.php?id_pedido=<?= $v['id_pedido'] ?>" class="btn-small">Ver</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

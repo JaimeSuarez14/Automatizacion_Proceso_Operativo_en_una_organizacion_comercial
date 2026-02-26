@@ -186,7 +186,7 @@ require 'header.php';
 </style>
 
 
-<h2>Carrito de pedidos</h2>
+<h2>Carrito de Compras</h2>
 
 <?php if (!$items): ?>
     <div style="padding: 15px 15px; border: 2px solid #b0b0b0; background-color: #f9f9f9; border-radius: 4px;">
