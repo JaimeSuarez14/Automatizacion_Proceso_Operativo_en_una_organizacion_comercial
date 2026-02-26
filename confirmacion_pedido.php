@@ -24,9 +24,10 @@ $stmt = $pdo->prepare("
         ep.descripcion as estado
     FROM pedidos p
     JOIN clientes c ON p.id_cliente = c.id_cliente
-    LEFT JOIN metodos_pago mp ON p.id_pago = mp.id_pago
+    LEFT JOIN metodospago mp ON p.id_pago = mp.id_pago
     LEFT JOIN estadopedido ep ON p.id_estado = ep.id_estado
     WHERE p.id_pedido = ?
+    ORDER BY p.fecha_pedido DESC
 ");
 $stmt->execute([$id_pedido]);
 $pedido = $stmt->fetch();

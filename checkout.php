@@ -17,6 +17,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
 $cart = $_SESSION['cart'];
 $items = [];
 $total = 0.0;
+$idCliente = $_SESSION['cliente_id'];
 
 if ($cart) {
     $ids = implode(',', array_map('intval', array_keys($cart)));
@@ -34,6 +35,11 @@ if ($cart) {
         ];
         $total += $subtotal;
     }
+
+    // 1. Buscar o crear cliente
+    $stmt = $pdo->prepare("SELECT * FROM clientes WHERE id_cliente = ?");
+    $stmt->execute([$idCliente]);
+    $clienteReg = $stmt->fetch();
 }
 
 // Obtener métodos de pago
@@ -84,28 +90,29 @@ require 'header.php';
                 <div class="form-group">
                     <label for="nombre_cliente">Nombre Completo: *</label>
                     <input type="text" id="nombre_cliente" name="nombre_cliente" 
-                           placeholder="Ej: Juan Pérez" required>
+                           placeholder="Ej: Juan Pérez" 
+                           value="<?php echo htmlspecialchars($clienteReg['nombre']); ?>" required>
                     <span class="error-msg" id="error_nombre"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="email_cliente">Email: *</label>
                     <input type="email" id="email_cliente" name="email_cliente" 
-                           placeholder="Ej: juan@email.com" required>
+                           placeholder="Ej: juan@email.com" value="<?php echo htmlspecialchars($clienteReg['email']); ?>" required>
                     <span class="error-msg" id="error_email"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="telefono_cliente">Teléfono: *</label>
                     <input type="tel" id="telefono_cliente" name="telefono_cliente" 
-                           placeholder="Ej: 987654321" required>
+                           placeholder="Ej: 987654321" value="<?php echo htmlspecialchars($clienteReg['telefono']); ?>" required>
                     <span class="error-msg" id="error_telefono"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="direccion_cliente">Dirección de Entrega: *</label>
                     <textarea id="direccion_cliente" name="direccion_cliente" 
-                              placeholder="Calle, número, distrito..." required></textarea>
+                              placeholder="Calle, número, distrito..." required><?php echo htmlspecialchars($clienteReg['direccion']); ?></textarea>
                     <span class="error-msg" id="error_direccion"></span>
                 </div>
 
@@ -292,15 +299,36 @@ require 'header.php';
 // Validación automática del formulario
 document.getElementById('formCheckout').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    if (validarFormulario()) {
-        // Mostrar loading
-        document.getElementById('btnProcesar').disabled = true;
-        document.getElementById('btnProcesar').textContent = 'Procesando...';
-        
-        // Enviar formulario
-        this.submit();
-    }
+
+    if (!validarFormulario()) return;
+
+    const btn = document.getElementById('btnProcesar');
+    btn.disabled = true;
+    btn.textContent = 'Procesando...';
+
+    const formData = new FormData(this);
+
+    fetch('procesar_venta.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // 🔥 AQUÍ ESTÁ LA REDIRECCIÓN
+            window.location.href = data.redirect;
+        } else {
+            alert(data.message);
+            btn.disabled = false;
+            btn.textContent = 'Procesar Pedido';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al procesar el pedido');
+        btn.disabled = false;
+        btn.textContent = 'Procesar Pedido';
+    });
 });
 
 function validarFormulario() {

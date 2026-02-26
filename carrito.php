@@ -44,7 +44,7 @@ $total = 0.0;
 
 if ($cart) {
     $ids = implode(',', array_map('intval', array_keys($cart)));
-    $stmt = $pdo->query("SELECT id_plato,nombre_plato,precio FROM platos WHERE id_plato IN ($ids)");
+    $stmt = $pdo->query("SELECT id_plato,nombre_plato,precio,imagen FROM platos WHERE id_plato IN ($ids)");
     $rows = $stmt->fetchAll();
     foreach ($rows as $r) {
         $qty = $cart[$r['id_plato']];
@@ -53,11 +53,14 @@ if ($cart) {
             'id' => $r['id_plato'],
             'nombre' => $r['nombre_plato'],
             'precio' => $r['precio'],
+            'imagen' => $r['imagen'],
             'cantidad' => $qty,
             'subtotal' => $subtotal
         ];
         $total += $subtotal;
     }
+
+    
 }
 
 require 'header.php';
@@ -186,15 +189,23 @@ require 'header.php';
 <h2>Carrito de pedidos</h2>
 
 <?php if (!$items): ?>
-    <p>No hay productos en el carrito. <a href="menu.php">Ir al menú</a></p>
+    <div style="padding: 15px 15px; border: 2px solid #b0b0b0; background-color: #f9f9f9; border-radius: 4px;">
+        <p>No hay productos en el carrito. <a href="menu.php">Ir al menú</a></p>
+    </div>
 <?php else: ?>
     <form method="post" action="carrito.php">
         <?php foreach ($items as $it): ?>
             <div class="cart-line">
-                <div>
-                    <strong><?= htmlspecialchars($it['nombre']) ?></strong>
-                    <div class="small">S/. <?= number_format($it['precio'], 2) ?> x
-                        <input type="number" name="cantidades[<?= $it['id'] ?>]" value="<?= $it['cantidad'] ?>" min="1" style="width:50px;">
+
+                <div style="display:flex; gap:5px;">
+                    <div style="display: inline;">
+                        <img style="width: 60px;" src="img/<?php echo htmlspecialchars($it['imagen'] ?: 'noimage.jpg'); ?>">
+                    </div>
+                    <div style="display: inline;">
+                        <strong><?= htmlspecialchars($it['nombre']) ?></strong>
+                        <div class="small">S/. <?= number_format($it['precio'], 2) ?> x
+                            <input type="number" name="cantidades[<?= $it['id'] ?>]" value="<?= $it['cantidad'] ?>" min="1" style="width:50px;">
+                        </div>
                     </div>
                 </div>
                 <div>
