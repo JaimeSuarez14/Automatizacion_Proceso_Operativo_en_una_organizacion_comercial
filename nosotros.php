@@ -121,7 +121,7 @@
 
                 <div class="col-md-4">
                     <div class="card border-0 shadow">
-                        <img src="img/local1.jpg" class="card-img-top" style="height:220px; object-fit:cover;">
+                        <img src="img/locales/local1.jpg" class="card-img-top" style="height:220px; object-fit:cover;">
                         <div class="card-body">
                             <h5 class="fw-bold">Local Centro</h5>
                             <p class="text-muted small">
@@ -134,7 +134,7 @@
 
                 <div class="col-md-4">
                     <div class="card border-0 shadow">
-                        <img src="img/local2.jpg" class="card-img-top" style="height:220px; object-fit:cover;">
+                        <img src="img/locales/local2.jpg" class="card-img-top" style="height:220px; object-fit:cover;">
                         <div class="card-body">
                             <h5 class="fw-bold">Local Norte</h5>
                             <p class="text-muted small">
@@ -147,7 +147,7 @@
 
                 <div class="col-md-4">
                     <div class="card border-0 shadow">
-                        <img src="img/local3.jpg" class="card-img-top" style="height:220px; object-fit:cover;">
+                        <img src="img/locales/local3.jpg" class="card-img-top" style="height:220px; object-fit:cover;">
                         <div class="card-body">
                             <h5 class="fw-bold">Local Sur</h5>
                             <p class="text-muted small">
