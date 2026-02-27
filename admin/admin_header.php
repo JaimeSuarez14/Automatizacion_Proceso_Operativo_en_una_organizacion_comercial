@@ -1,5 +1,7 @@
 <?php
 // header_admin.php
+define("BASE_URL", "http://localhost:8080/");
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -7,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Panel de Administración</title>
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?= BASE_URL ?>assets/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- using Bootstrap v5.3 -->
     <style>
@@ -73,9 +75,9 @@
     <header>
         <h1>Panel de Administración</h1>
         <nav>
-            <a href="admin_platos.php">Gestionar Platos</a>
-            <a href="admin_pedidos.php">Gestionar Pedidos</a>
-            <a href="admin.php" style="background:#6c757d; padding:5px 10px; border-radius:4px;">Inicio</a>
+            <a href="<?= BASE_URL ?>admin/admin_platos.php">Gestionar Platos</a>
+            <a href="<?= BASE_URL ?>admin/admin_pedidos.php">Gestionar Pedidos</a>
+            <a href="<?= BASE_URL ?>admin/admin.php" style="background:#6c757d; padding:5px 10px; border-radius:4px;">Inicio</a>
         </nav>
     </header>
 

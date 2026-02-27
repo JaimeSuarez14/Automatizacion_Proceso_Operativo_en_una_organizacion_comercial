@@ -1,3 +1,5 @@
+<?php ?>
+
 </main>
 
 <footer class="site-footer" style="background:#003c5c; color:white; padding:40px 0; margin-top:40px;">
@@ -50,7 +52,7 @@
   </div>
 </footer>
 <script
-      src="../assets/dist/js/bootstrap.bundle.min.js"
+      src="<?= BASE_URL ?>assets/dist/js/bootstrap.bundle.min.js"
       class="astro-vvvwv3sm"
     ></script>
 <script>

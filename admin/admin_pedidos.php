@@ -4,9 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Conexión
+// Conexión a la base de datos
 require '../db.php'; // Ajusta la ruta si es necesario
-require __DIR__ . '../admin_header.php';
+require __DIR__ . '/admin_header.php';
 $subtitulo = "Listado de Pedidos ";
 ?>
 
@@ -218,4 +218,4 @@ include"cabecera_admin_pedidos.php";
         });
     });
 </script>
-<?php require __DIR__ . '../admin_footer.php'; ?>
+<?php require __DIR__ . '/admin_footer.php'; ?>

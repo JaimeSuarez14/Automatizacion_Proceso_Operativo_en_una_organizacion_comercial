@@ -31,7 +31,7 @@ Proyecto web para la gestión y realización de pedidos de comida en línea. Per
 2. Crear una base de datos MySQL y ejecutar las consultas necesarias para crear las tablas (usuarios, platos, pedidos). (Si no hay script SQL incluido, crear las tablas según el flujo de la app.)
 3. Configurar la conexión a la base de datos en `db.php` (host, usuario, contraseña, nombre de BD).
 4. Configurar credenciales de correo en `PHPMailer` o en `send_order_email.php` si usa SMTP.
-5. Iniciar Apache y MySQL desde el panel de XAMPP y abrir `http://localhost/choza2/` en el navegador.
+5. Iniciar Apache y MySQL desde el panel de XAMPP y abrir con el comando "php -S localhost:8080" en el navegador.
 
 ## Notas y recomendaciones
 

@@ -4,6 +4,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['nombre_usuario'])) {
     header("Location: ../index.php");
     exit;
 }
+define("BASE_URL", "http://localhost:8080/");
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +66,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['nombre_usuario'])) {
 
                 <div class="col">
                     <a class="btn btn-primary w-100" href="admin_pedidos.php"><i class="fa-solid fa-square-pen" style="margin-right: 5px;"></i>Gestionar Pedidos</a>
+                </div>
 
+                <div class="col">
+                    <a class="btn btn-primary w-100" href="<?= 'inventarios/index.php' ?>" ><i class="fa-solid fa-jar-wheat" style="margin-right: 5px;"></i>Gestionar Inventarios</a>
                 </div>
 
                 <div class="col">
