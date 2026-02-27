@@ -1,6 +1,5 @@
 <?php
 require '../db.php';
-session_start();
 
 // Verificar autenticación de admin (ajusta según tu sistema)
 // if (!isset($_SESSION['admin'])) {
@@ -81,11 +80,27 @@ $stmt = $pdo->query("
 ");
 $ingresos_mes = $stmt->fetchAll();
 
-require __DIR__ . '../admin_header.php';;
+require __DIR__ . '../admin_header.php';
+require __DIR__ . '/notificaciones/notificaciones.php';
 ?>
 
 <section class="dashboard-section">
     <h2>Dashboard de Ventas</h2>
+    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
 
     <!-- Tarjetas de Resumen -->
     <div class="dashboard-grid">
@@ -164,7 +179,7 @@ require __DIR__ . '../admin_header.php';;
 
         <!-- Últimas Ventas -->
         <div class="card content-block full-width">
-            <h3>Últimas 10 Ventas</h3>
+            <h3>Últimas 10 Ventas <a href="<?= BASE_URL ?>admin/ventas/historial_ventas.php" class="btn btn-sm btn-primary">Ver Lista Completa</a></h3>
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -307,7 +322,7 @@ require __DIR__ . '../admin_header.php';;
         background-color: #ff9800;
     }
 
-    .badge-completada {
+    .badge-entregado {
         background-color: #4caf50;
     }
 
@@ -428,6 +443,29 @@ require __DIR__ . '../admin_header.php';;
                 }
             }
         });
+    }
+</script>
+<script>
+    function marcarLeido(id) {
+
+        fetch("notificaciones/marcar_leido.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "id=" + id
+            })
+            .then(response => response.text())
+            .then(() => {
+                let alerta = document.getElementById("noti-" + id);
+                alerta.classList.remove("show");
+                alerta.classList.add("fade");
+
+                setTimeout(() => {
+                    alerta.remove();
+                }, 300);
+            });
+
     }
 </script>
 
