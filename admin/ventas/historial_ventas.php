@@ -392,6 +392,11 @@ $ventas = $stmt->fetchAll();
           <h5>Ventas Recientes</h5>
           <small>Mostrando las últimas 10 ventas</small>
         </div>
+        <div>
+          <a href="exportar_pdf.php" class="stat-pill" style="text-decoration:none;">
+            📄 Exportar PDF
+          </a>
+        </div>
       </div>
 
       <div class="table-responsive-wrapper">
