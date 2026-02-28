@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require __DIR__ . '/../db.php';
 session_start();
 
 if (!isset($_SESSION['cliente_nombre']) || empty($_SESSION['cliente_nombre'])) {
@@ -38,7 +38,8 @@ if (!$pedidos) {
   exit;
 }
 
-require 'header.php';
+require __DIR__ . '/../header.php';
+
 ?>
 
 <section class="container py-5">
@@ -65,51 +66,57 @@ require 'header.php';
                   <th>Total</th>
                   <th>Estado</th>
                   <th>Método de Pago</th>
+                  <th>Detalle</th>
                 </tr>
               </thead>
 
               <tbody>
                 <?php foreach ($pedidos as $pedido): ?>
-                <tr>
+                  <tr>
 
-                  <td class="fw-bold">
-                    #<?= htmlspecialchars($pedido['id_pedido']); ?>
-                  </td>
+                    <td class="fw-bold">
+                      #<?= htmlspecialchars($pedido['id_pedido']); ?>
+                    </td>
 
-                  <td>
-                    <?= date("d/m/Y H:i", strtotime($pedido['fecha_pedido'])); ?>
-                  </td>
+                    <td>
+                      <?= date("d/m/Y H:i", strtotime($pedido['fecha_pedido'])); ?>
+                    </td>
 
-                  <td class="fw-semibold text-success">
-                    S/. <?= number_format($pedido['monto_total'], 2); ?>
-                  </td>
+                    <td class="fw-semibold text-success">
+                      S/. <?= number_format($pedido['monto_total'], 2); ?>
+                    </td>
 
-                  <td>
-                    <?php
+                    <td>
+                      <?php
                       $estado = $pedido['estado'] ?? 'Pendiente';
 
                       $badgeClass = 'bg-secondary';
 
                       if (stripos($estado, 'pendiente') !== false) {
-                          $badgeClass = 'bg-warning text-dark';
+                        $badgeClass = 'bg-warning text-dark';
                       } elseif (stripos($estado, 'completado') !== false) {
-                          $badgeClass = 'bg-success';
+                        $badgeClass = 'bg-success';
                       } elseif (stripos($estado, 'cancelado') !== false) {
-                          $badgeClass = 'bg-danger';
+                        $badgeClass = 'bg-danger';
                       }
-                    ?>
-                    <span class="badge <?= $badgeClass ?> px-3 py-2 rounded-pill">
-                      <?= htmlspecialchars($estado); ?>
-                    </span>
-                  </td>
+                      ?>
+                      <span class="badge <?= $badgeClass ?> px-3 py-2 rounded-pill">
+                        <?= htmlspecialchars($estado); ?>
+                      </span>
+                    </td>
 
-                  <td>
-                    <span class="badge bg-info text-dark px-3 py-2 rounded-pill">
-                      <?= htmlspecialchars($pedido['metodo_pago']); ?>
-                    </span>
-                  </td>
-
-                </tr>
+                    <td>
+                      <span class="badge bg-info text-dark px-3 py-2 rounded-pill">
+                        <?= htmlspecialchars($pedido['metodo_pago']); ?>
+                      </span>
+                    </td>
+                    <td>
+                      <a href="detalle_pedido.php?id_pedido=<?= $pedido['id_pedido']; ?>"
+                        class="btn btn-sm btn-outline-primary">
+                        Ver Detalle
+                      </a>
+                    </td>
+                  </tr>
                 <?php endforeach; ?>
               </tbody>
 
@@ -124,4 +131,4 @@ require 'header.php';
 
 </section>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/../footer.php'; ?>

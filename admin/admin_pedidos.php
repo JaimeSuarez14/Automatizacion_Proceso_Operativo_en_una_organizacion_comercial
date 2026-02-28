@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 // Conexión a la base de datos
 require '../db.php'; // Ajusta la ruta si es necesario
-require __DIR__ . '/admin_header.php';
+
 $subtitulo = "Listado de Pedidos ";
 ?>
 
@@ -74,6 +74,7 @@ if (!$result) die("Error en la consulta: " . $conn->error);
 // Traer todos los estados para dropdown
 // ==========================
 $estados = $conn->query("SELECT * FROM estadospedido")->fetch_all(MYSQLI_ASSOC);
+require __DIR__ . '/admin_header.php';
 include"cabecera_admin_pedidos.php";
 ?>
 

@@ -1,6 +1,8 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
+define("BASE_URL", "http://localhost:8080/");
 ?>
+
 <!doctype html>
 <html lang="es">
 
@@ -8,9 +10,9 @@ if (session_status() === PHP_SESSION_NONE) session_start();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>La Choza Náutica</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>style.css">
   <link rel="icon" type="image/x-icon" href="icons/logo.png">
-  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="<?= BASE_URL ?>assets/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
@@ -20,27 +22,27 @@ if (session_status() === PHP_SESSION_NONE) session_start();
   <header class="site-header bg-info-subtle">
     <div class="container header-inner">
       <h1 class="brand">
-        <img src="icons/logo.png" width="60" alt="">
+        <img src="<?= BASE_URL ?>icons/logo.png" width="60" alt="">
         La Choza Náutica
       </h1>
       <nav class="main-nav">
-        <a class="flex align-content-center gap-2" href="index.php">
+        <a class="flex align-content-center gap-2" href="<?= BASE_URL ?>index.php">
           <i class="fa-solid fa-house"></i><span>Inicio</span>
         </a>
-        <a href="nosotros.php" class="flex align-content-center gap-4">
+        <a href="<?= BASE_URL ?>nosotros.php" class="flex align-content-center gap-4">
           <i class="fa-solid fa-users me-2"></i><span>Nosotros</span>
         </a>
-        <a href="menu.php" class="flex align-content-center gap-2"><i class="fa-solid fa-plate-wheat">
+        <a href="<?= BASE_URL ?>menu.php" class="flex align-content-center gap-2"><i class="fa-solid fa-plate-wheat">
           </i><span>Menú</span>
         </a>
 
 
         <?php if (isset($_SESSION['nombre_usuario'])): ?>
-          <a href="admin/admin.php" style="color:green; font-size: bold; font-weight: bold; padding: 5px ;background-color: #bde3af;" class="flex align-items-center gap-5"><i class="fa-solid fa-user-shield"></i><span>Gestionar</span></a>
+          <a href="<?= BASE_URL ?>admin/admin.php" style="color:green; font-size: bold; font-weight: bold; padding: 5px ;background-color: #bde3af;" class="flex align-items-center gap-5"><i class="fa-solid fa-user-shield"></i><span>Gestionar</span></a>
         <?php endif ?>
 
         <?php if (isset($_SESSION['cliente_nombre']) || isset($_SESSION['nombre_usuario'])): ?>
-          <a class="flex align-items-center gap-2" href="carrito.php">
+          <a class="flex align-items-center gap-2" href="<?= BASE_URL ?>carrito.php">
             <i class="fa-solid fa-cart-arrow-down "></i>
             <span>Pedidos (Carrito)</span>
           </a>
@@ -59,17 +61,18 @@ if (session_status() === PHP_SESSION_NONE) session_start();
               <li>
                 <div class="bg-danger text-white flex align-items-center dropdown-item">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  <a href="logout.php" style="text-decoration:none; color:white;">Cerrar sesión</a>
+                  <a href="<?= BASE_URL ?>logout.php" style="text-decoration:none; color:white;">Cerrar sesión</a>
                 </div>
               </li>
-              <li><a class="dropdown-item" href="historial_pedidos.php">Historial Pedidos</a></li>
-              <li><a class="dropdown-item" href="#">Comentarios</a></li>
+              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/historial_pedidos.php">Historial Pedidos</a></li>
+              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/calificar_producto.php" >Feedback</a></li>
+              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/historial_pedidos.php" >Comentarios</a></li>
             </ul>
           </div>
 
        
         <?php else: ?>
-          <a href="login.php" class="flex align-content-center gap-2">
+          <a href="<?= BASE_URL ?>login.php" class="flex align-content-center gap-2">
           <i class="fa-solid fa-arrow-right-to-bracket"></i>
           <span>Iniciar sesión</span>
         </a>

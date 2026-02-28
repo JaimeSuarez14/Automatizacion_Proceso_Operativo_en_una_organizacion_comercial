@@ -73,6 +73,10 @@ define("BASE_URL", "http://localhost:8080/");
                 </div>
 
                 <div class="col">
+                    <a class="btn btn-outline-primary w-100" href="<?= 'compras/lista_ordenes.php' ?>" ><i class="fa-solid fa-jar-wheat" style="margin-right: 5px;"></i>Gestionar Compras</a>
+                </div>
+
+                <div class="col">
                     <a class="btn btn-secondary w-100" href="../index.php"><i class="fa-solid fa-rotate-left"></i>Ingresar a la página</a>
                 </div>
 

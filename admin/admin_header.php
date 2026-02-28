@@ -145,9 +145,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['nombre_usuario'])) {
                             <li><a class="dropdown-item" href="<?= BASE_URL ?>admin/admin_platos.php">Platos</a></li>
                             <li><a class="dropdown-item" href="<?= BASE_URL ?>admin/inventarios/index.php">Inventario</a></li>
                             <li>
+                            <li><a class="dropdown-item" href="<?= BASE_URL ?>admin/compras/lista_ordenes.php">Compras</a></li>
+                            <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item bg-outline-danger" href="<?= BASE_URL ?>logout.php">Cerrar Sesion</a></li>
+                            <li><a class="dropdown-item text-danger" href="<?= BASE_URL ?>logout.php">Cerrar Sesion</a></li>
                         </ul>
                     </li>
                     <span class="badge rounded-pill ms-1" style="background:#e94560; font-size:.7rem;">!</span>

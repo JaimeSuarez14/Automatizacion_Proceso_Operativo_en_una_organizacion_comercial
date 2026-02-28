@@ -5,7 +5,7 @@
 
     <!-- Logo y lema -->
     <div style="flex:1; min-width:250px; text-align:center; margin-bottom:20px;">
-      <img src="img/logo.png" alt="La Choza Náutica" style="width:120px; margin-bottom:10px;">
+      <img src="<?= BASE_URL ?>img/logo.png" alt="La Choza Náutica" style="width:120px; margin-bottom:10px;">
       <h2 style="color:#ffc400; margin:10px 0;">La Choza Náutica</h2>
       <p>Sabores del mar directo a tu mesa 🌊</p>
       <div>
@@ -60,7 +60,7 @@
     });
   });
 </script>
-<script src="assets/dist/js/bootstrap.bundle.min.js"
+<script  src="<?= BASE_URL ?>assets/dist/js/bootstrap.bundle.min.js"
   class="astro-vvvwv3sm"></script>
 
 
