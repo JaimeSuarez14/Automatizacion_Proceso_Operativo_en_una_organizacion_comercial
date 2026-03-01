@@ -15,6 +15,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['nombre_usuario'])) {
 <head>
     <meta charset="UTF-8">
     <title>Panel de Administración</title>
+    <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>icons/logo.png">
     <link href="<?= BASE_URL ?>assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- using Bootstrap v5.3 -->

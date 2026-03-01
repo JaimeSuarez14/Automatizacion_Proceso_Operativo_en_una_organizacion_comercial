@@ -11,7 +11,7 @@ define("BASE_URL", "http://localhost:8080/");
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>La Choza Náutica</title>
   <link rel="stylesheet" href="<?= BASE_URL ?>style.css">
-  <link rel="icon" type="image/x-icon" href="icons/logo.png">
+  <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>icons/logo.png">
   <link href="<?= BASE_URL ?>assets/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -58,28 +58,29 @@ define("BASE_URL", "http://localhost:8080/");
 
             </button>
             <ul class="dropdown-menu">
+
+              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/historial_pedidos.php">Historial Pedidos</a></li>
+              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/calificar_producto.php">Feedback</a></li>
+              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/historial_pedidos.php">Comentarios</a></li>
               <li>
                 <div class="bg-danger text-white flex align-items-center dropdown-item">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
                   <a href="<?= BASE_URL ?>logout.php" style="text-decoration:none; color:white;">Cerrar sesión</a>
                 </div>
               </li>
-              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/historial_pedidos.php">Historial Pedidos</a></li>
-              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/calificar_producto.php" >Feedback</a></li>
-              <li><a class="dropdown-item" href="<?= BASE_URL ?>cliente/historial_pedidos.php" >Comentarios</a></li>
             </ul>
           </div>
 
-       
+
         <?php else: ?>
           <a href="<?= BASE_URL ?>login.php" class="flex align-content-center gap-2">
-          <i class="fa-solid fa-arrow-right-to-bracket"></i>
-          <span>Iniciar sesión</span>
-        </a>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <span>Iniciar sesión</span>
+          </a>
         <?php endif;  ?>
       </nav>
-  <button class="menu-toggle" aria-label="Menu">☰</button>
-  </div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
   </header>
 
   <main class="container">
